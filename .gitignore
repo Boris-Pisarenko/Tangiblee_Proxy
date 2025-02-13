@@ -3,6 +3,7 @@ dist/
 build/
 __pycache__/
 .venv/
+_distutils_hack
 
 *.exe
 *.spec
