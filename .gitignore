@@ -1,9 +1,9 @@
 
-dist/
-build/
-__pycache__/
+.dist/
+.build/
+.__pycache__/
 .venv/
-_distutils_hack
+._distutils_hack
 
 
 *.spec
