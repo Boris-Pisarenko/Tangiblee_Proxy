@@ -32,14 +32,14 @@ class ProxyGUI(QWidget):
         self.staging_checkbox = QCheckBox("Подмена для staging PROD", self)
         self.inject_checkbox = QCheckBox("Включить Inject Script", self)
 
-        # Поля для ввода домена и скрипта
+        
         self.domain_input = QLineEdit(self)
         self.domain_input.setPlaceholderText("Введите домен (example.com)")
 
         self.script_input = QTextEdit(self)
         self.script_input.setPlaceholderText("Введите JavaScript-код для инжекции")
 
-        # Кнопки управления прокси
+        
         self.start_button = QPushButton("Старт", self)
         self.stop_button = QPushButton("Стоп", self)
 
@@ -130,7 +130,7 @@ class ProxyGUI(QWidget):
     def update_inject_script(self):
         """
         Добавляет новый Inject Script в `inject_scripts.json`
-        **БЕЗ модификации кода**.
+        
         """
         domain = self.domain_input.text().strip()
         script_code = self.script_input.toPlainText().strip()
@@ -148,7 +148,7 @@ class ProxyGUI(QWidget):
         else:
             data = {}
 
-        # Записываем 1-в-1 без изменений
+        
         data[domain] = script_code  
 
         with open(SCRIPT_STORAGE_FILE, "w", encoding="utf-8") as file:
