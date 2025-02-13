@@ -5,7 +5,7 @@ __pycache__/
 .venv/
 _distutils_hack
 
-*.exe
+
 *.spec
 
 
