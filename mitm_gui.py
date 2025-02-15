@@ -8,7 +8,7 @@ from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLa
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPalette, QColor, QIcon
 import update_manager  
-import mitm_proxy_runner  # Импортируем новый файл
+import mitm_proxy_runner  
 
 LOG_FILE = "mitmproxy.log"
 SCRIPT_STORAGE_FILE = "inject_scripts.json"
@@ -31,8 +31,8 @@ class ProxyGUI(QWidget):
         self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.set_status_color("red")
 
-        # Новая галочка для простого запуска mitmproxy
-        self.simple_proxy_checkbox = QCheckBox("Просто включить mitmproxy", self)
+        
+        self.simple_proxy_checkbox = QCheckBox("Включить mitmproxy", self)
 
         self.staging_checkbox = QCheckBox("Подмена для staging PROD", self)
         self.inject_checkbox = QCheckBox("Включить Inject Script", self)
@@ -52,7 +52,7 @@ class ProxyGUI(QWidget):
 
         layout = QVBoxLayout()
         layout.addWidget(self.label)
-        layout.addWidget(self.simple_proxy_checkbox)  # Новая галочка
+        layout.addWidget(self.simple_proxy_checkbox)  
         layout.addWidget(self.staging_checkbox)
         layout.addWidget(self.inject_checkbox)
         layout.addWidget(QLabel("Домен для Inject Script:"))
@@ -81,12 +81,12 @@ class ProxyGUI(QWidget):
     def start_proxy(self):
         """Запускает mitmproxy с разными настройками"""
         
-        # Если выбрана галочка "Просто включить mitmproxy"
+        
         if self.simple_proxy_checkbox.isChecked():
             mitm_proxy_runner.start_mitmproxy_simple()
             self.label.setText("✅ mitmproxy ВКЛЮЧЕН (без скриптов)")
             self.set_status_color("green")
-            return  # Прерываем выполнение других скриптов
+            return  
 
         scripts = []
 
